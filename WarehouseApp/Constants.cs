@@ -13,6 +13,8 @@ namespace WarehouseApp
         public const double PalletHeight = 20.0;
         public const double PalletDepth = 40.0;
         public const double PalletBaseWeight = 30.0;
+        public const int MinBoxesCnt = 1;
+        public const int MaxBoxesCnt = 100;
         // Коробки
         public const double BoxWidth = 10.0;
         public const double BoxHeight = 10.0;

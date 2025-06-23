@@ -21,9 +21,9 @@ namespace WarehouseApp
                 var boxWeight = Constants.BoxWeight * randomDouble;
                 var box = new Box(
                     id,
-                    Math.Round(boxWidth, 3), //Math.Round(Constants.BoxWidth * randomDouble, 3),
-                    Math.Round(boxHeight, 3), //Math.Round(Constants.BoxHeight * randomDouble, 3),
-                    Math.Round(boxDepth, 3), //Math.Round(Constants.BoxDepth * randomDouble, 3),
+                    Math.Round(boxWidth, 3),
+                    Math.Round(boxHeight, 3),
+                    Math.Round(boxDepth, 3),
                     Math.Round(boxWeight, 3),
                     GetRandomDate(),
                     null // Конструктор вычисляет срок годности из даты производства
@@ -37,7 +37,7 @@ namespace WarehouseApp
             var pallets = new List<Pallet>();
             for (int id = 0; id < palletCnt; id++)
             {
-                int boxCnt = _random.Next(1, 100);
+                int boxCnt = _random.Next(Constants.MinBoxesCnt, Constants.MaxBoxesCnt);
                 var boxes = GenerateBoxes(boxCnt);
                 var pallet = new Pallet(
                     id,

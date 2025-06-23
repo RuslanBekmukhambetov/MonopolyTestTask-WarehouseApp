@@ -27,11 +27,9 @@ namespace WarehouseApp
             Depth = depth;
             Volume = Math.Round(Width * Height * Depth, 3);
             Weight = weight;
-            // Додумать логику с датой производства и срока годности
             if (!productionDt.HasValue && !expirationDt.HasValue)
                 throw new ArgumentException("Одна из дат должна быть указана");
             ProductionDt = productionDt;
-            ExpirationDt = expirationDt ?? productionDt.Value.AddDays(Constants.ExpirationDays);
             if (expirationDt.HasValue && productionDt.HasValue && expirationDt.Value < productionDt.Value)
                 throw new ArgumentException("Дата производства больше срока годности");
         }
