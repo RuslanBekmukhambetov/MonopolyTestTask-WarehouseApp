@@ -10,9 +10,9 @@ namespace WarehouseApp
     {
         public static Dictionary<DateTime, List<Pallet>> PalletSorting (List<Pallet> pallets)
         {
-            var palletsGroups = pallets.OrderBy(x => x.ExpirationDt).GroupBy(x => x.ExpirationDt)
+            var palletGroups = pallets.OrderBy(x => x.ExpirationDt).GroupBy(x => x.ExpirationDt)
                                        .ToDictionary(x => x.Key, x => x.OrderBy(x => x.Weight).ToList());
-            return palletsGroups;
+            return palletGroups;
         }
 
         public static List<Pallet> PalletsWithMaxExpirationDt (List<Pallet> pallets)
