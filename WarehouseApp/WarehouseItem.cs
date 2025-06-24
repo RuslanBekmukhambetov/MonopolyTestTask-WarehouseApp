@@ -11,14 +11,14 @@ namespace WarehouseApp
     }
     class Box : WarehouseItem
     {
-        public int Id { get; init; }
-        public double Width { get; init; }
-        public double Height { get; init; }
-        public double Depth { get; init; }
-        public double Volume { get; init; }
-        public double Weight { get; init; }
-        public DateTime? ProductionDt { get; init; }
-        public DateTime ExpirationDt { get; init; }
+        public int Id { get; private set; }
+        public double Width { get; private set; }
+        public double Height { get; private set; }
+        public double Depth { get; private set; }
+        public double Volume { get; private set; }
+        public double Weight { get; private set; }
+        public DateTime? ProductionDt { get; private set; }
+        public DateTime ExpirationDt { get; private set; }
         public Box(int id, double width, double height, double depth, double weight, DateTime? productionDt = null, DateTime? expirationDt = null)
         {
             Id = id; // В ТЗ нет указания каким образом присваивать ID - можно пределать на GUID
@@ -30,20 +30,21 @@ namespace WarehouseApp
             if (!productionDt.HasValue && !expirationDt.HasValue)
                 throw new ArgumentException("Одна из дат должна быть указана");
             ProductionDt = productionDt;
+            ExpirationDt = expirationDt.HasValue ? expirationDt.Value.Date : ProductionDt.Value.AddDays(100).Date;
             if (expirationDt.HasValue && productionDt.HasValue && expirationDt.Value < productionDt.Value)
                 throw new ArgumentException("Дата производства больше срока годности");
         }
     }
     class Pallet : WarehouseItem
     {
-        public int Id { get; init; }
-        public double Width { get; init; }
-        public double Height { get; init; }
-        public double Depth { get; init; }
-        public double Volume { get; init; }
-        public double Weight { get; init; }
-        public List<Box> Boxes { get; init; }
-        public DateTime ExpirationDt { get; init; }
+        public int Id { get; private set; }
+        public double Width { get; private set; }
+        public double Height { get; private set; }
+        public double Depth { get; private set; }
+        public double Volume { get; private set; }
+        public double Weight { get; private set; }
+        public List<Box> Boxes { get; private set; }
+        public DateTime ExpirationDt { get; private set; }
         public Pallet(int id, double width, double height, double depth, List<Box> boxes)
         {
             Id = id; // В ТЗ нет указания каким образом присваивать ID - можно пределать на GUID
@@ -56,7 +57,8 @@ namespace WarehouseApp
             // В ТЗ не указано как поступать при отсутсвии коробок на паллете - выбрасывает исключение
             if (boxes.Count == 0)
                 throw new ArgumentException("На паллете нет коробок");
-            double weight = Boxes.Sum(x => x.Weight) + Constants.PalletBaseWeight;
+            ExpirationDt = boxes.Min(x => x.ExpirationDt);
+            double weight = boxes.Sum(x => x.Weight) + Constants.PalletBaseWeight;
             Weight = Math.Round(weight, 3);
             double volume = Boxes.Sum(x => x.Volume) + (Width * Height * Depth);
             Volume = Math.Round(volume, 3);
