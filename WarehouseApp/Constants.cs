@@ -44,7 +44,7 @@ namespace WarehouseApp
     2. 3 паллеты, которые содержат коробки с наибольшим сроком годности, отсортированные по возрастанию объема;
     0. завершение работы.";
         public const string Separator = "-------------------";
-        public static readonly int[] AllowedChoices = new[] { "0", "1", "2" };
+        public static readonly string[] AllowedChoices = new[] { "0", "1", "2" };
     }
         
 }
