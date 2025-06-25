@@ -13,7 +13,7 @@ namespace WarehouseApp
             Console.WriteLine(Constants.Menu);
             Console.WriteLine(Constants.Separator);
             var choice = Console.ReadLine();
-            while (string.IsNullOrEmpty(choice) || !int.TryParse(choice, out var _))
+            while (string.IsNullOrEmpty(choice) || !Constants.AllowedChoices.Contains(choice))
             {
                 Console.WriteLine("Выберите корректный вариант:");
                 choice = Console.ReadLine();
