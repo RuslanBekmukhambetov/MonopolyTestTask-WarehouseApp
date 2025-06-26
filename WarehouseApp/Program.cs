@@ -13,9 +13,9 @@ Console.WriteLine(Constants.Separator);
 Console.WriteLine(Constants.Intro);
 var input = Console.ReadLine();
 int palletCnt;
-while (string.IsNullOrEmpty(input) || !int.TryParse(input, out palletCnt) || palletCnt <= 0)
+while (string.IsNullOrEmpty(input) || !int.TryParse(input, out palletCnt) || palletCnt <= 0 || palletCnt > Constants.PalletMaxCnt)
 {
-    Console.WriteLine("Введите корректное число паллет:");
+    Console.WriteLine("Введите корректное число паллет (max 100):");
     input = Console.ReadLine();
 }
 var pallets = Generator.GeneratePallets(palletCnt);
