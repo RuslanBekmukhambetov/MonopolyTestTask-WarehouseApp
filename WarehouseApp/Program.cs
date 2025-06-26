@@ -12,12 +12,13 @@ using WarehouseApp;
 Console.WriteLine(Constants.Separator);
 Console.WriteLine(Constants.Intro);
 var input = Console.ReadLine();
-while (string.IsNullOrEmpty(input) || !int.TryParse(input, out var _))
+int palletCnt;
+while (string.IsNullOrEmpty(input) || !int.TryParse(input, out palletCnt) || palletCnt <= 0)
 {
-    Console.WriteLine("Выберите корректный вариант.");
+    Console.WriteLine("Введите корректное число паллет:");
     input = Console.ReadLine();
 }
-var pallets = Generator.GeneratePallets(int.Parse(input));
+var pallets = Generator.GeneratePallets(palletCnt);
 Console.WriteLine($"Создана коллекция из {pallets.Count} паллет.");
 Console.WriteLine(Constants.Separator);
 
