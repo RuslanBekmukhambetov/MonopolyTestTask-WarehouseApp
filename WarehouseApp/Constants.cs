@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseApp
 {
-    internal class Constants
+    public class Constants
     {
         // Паллеты
         public const double PalletWidth = 40.0;

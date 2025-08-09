@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseApp
 {
-    internal class Output
+    public class Output
     {
         public static Dictionary<DateTime, List<Pallet>> PalletSorting (List<Pallet> pallets)
         {

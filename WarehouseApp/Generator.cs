@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseApp
 {
-    internal class Generator
+    public class Generator
     {
         private static readonly Random _random = new Random();
         public static List<Box> GenerateBoxes (int boxesCnt)

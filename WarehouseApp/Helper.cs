@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarehouseApp
 {
-    internal class Helper
+    public class Helper
     {
         public static string MakeAChoice()
         {

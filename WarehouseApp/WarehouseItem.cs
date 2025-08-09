@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WarehouseApp
 {
-    abstract class WarehouseItem
+    public abstract class WarehouseItem
     {
     }
-    class Box : WarehouseItem
+    public class Box : WarehouseItem
     {
         public int Id { get; private set; }
         public double Width { get; private set; }
@@ -35,7 +35,7 @@ namespace WarehouseApp
                 throw new ArgumentException("Дата производства больше срока годности");
         }
     }
-    class Pallet : WarehouseItem
+    public class Pallet : WarehouseItem
     {
         public int Id { get; private set; }
         public double Width { get; private set; }
