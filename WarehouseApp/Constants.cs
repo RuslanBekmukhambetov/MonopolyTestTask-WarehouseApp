@@ -37,7 +37,7 @@ namespace WarehouseApp
             return dates;
         }
         // Меню
-        public const string Intro = $@"Приложение для склада.
+        public static string Intro = $@"Приложение для склада.
 Укажите количество паллет для генерации (max {Constants.PalletMaxCnt}):";
 
         public const string Menu = $@"Выберите действие:
