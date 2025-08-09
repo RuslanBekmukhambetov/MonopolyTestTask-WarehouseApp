@@ -21,7 +21,7 @@ namespace WarehouseApp
         public DateTime ExpirationDt { get; private set; }
         public Box(int id, double width, double height, double depth, double weight, DateTime? productionDt = null, DateTime? expirationDt = null)
         {
-            Id = id; // В ТЗ нет указания каким образом присваивать ID - можно пределать на GUID
+            Id = id;
             Width = width;
             Height = height;
             Depth = depth;
@@ -47,14 +47,13 @@ namespace WarehouseApp
         public DateTime ExpirationDt { get; private set; }
         public Pallet(int id, double width, double height, double depth, List<Box> boxes)
         {
-            Id = id; // В ТЗ нет указания каким образом присваивать ID - можно пределать на GUID
+            Id = id;
             Width = width;
             Height = height;
             Depth = depth;
             Boxes = boxes;
             if (boxes.Any(x => x.Width > Width || x.Depth > Depth))
                 throw new ArgumentException("Размеры коробки больше размера паллета");
-            // В ТЗ не указано как поступать при отсутсвии коробок на паллете - выбрасывает исключение
             if (boxes.Count == 0)
                 throw new ArgumentException("На паллете нет коробок");
             ExpirationDt = boxes.Min(x => x.ExpirationDt);
